@@ -1,1 +1,127 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KANASÍN 2027-2030</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:Arial;background:#FFF8E7}
+header{background:#7A0C1D;color:#fff;display:flex;align-items:center;gap:10px;padding:8px 10px;position:sticky;top:0;z-index:10;flex-wrap:wrap;border-bottom:4px solid #C9A227}
+header .foto{width:58px;height:58px;border-radius:50%;object-fit:cover;border:3px solid #C9A227}
+header .nombre b{font-size:13px}header .nombre span{font-size:10px;color:#FFD700}
+nav{flex:1;display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
+nav button{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;padding:9px 10px;border-radius:8px;font-weight:800;cursor:pointer;font-size:11px}
+nav button.act{background:#C9A227;color:#111}
+.layout{display:flex}.lado{width:250px;background:#7A0C1D;color:#fff;padding:14px}
+.lado button,.lado a{display:block;width:100%;text-align:left;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;padding:11px;border:none;border-radius:8px;margin-bottom:7px;font-weight:700;cursor:pointer;font-size:12px}
+main{flex:1;padding:14px;max-width:1000px;margin:auto}
+.card{background:#fff;padding:16px;border-radius:14px;margin:12px 0;border-left:6px solid #7A0C1D}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}@media(max-width:700px){.grid3{grid-template-columns:1fr}.layout{flex-direction:column}.lado{width:100%}}
+.red{padding:16px;border-radius:12px;color:#fff;text-align:center}.fb{background:#1877F2}.ig{background:#E1306C}.yt{background:#FF0000}
+input,select,textarea{width:100%;padding:11px;margin:5px 0;border:1.5px solid #ddd;border-radius:10px}
+.btn{width:100%;padding:13px;background:#7A0C1D;color:#fff;border:none;border-radius:10px;font-weight:900;cursor:pointer}
+.seccion{display:none}.seccion.act{display:block}
+.org-box{border:2px solid #C9A227;padding:10px;border-radius:10px;margin:6px 0;cursor:pointer;background:#FFF8E7}
+.det{display:none;background:#FFF3CD;padding:10px;border-radius:8px;font-size:13px;margin-top:6px}.det.act{display:block}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px;border-bottom:1px solid #eee;text-align:left}th{background:#7A0C1D;color:#fff}
+.ayunta{width:100%;height:280px;object-fit:cover;border-radius:14px;margin-top:14px}
+</style></head><body>
 
+<header>
+<img class="foto" src="foto1.jpg">
+<div class="nombre"><b>EDUARDO JAVIER<br>MORA GONZÁLEZ</b><br><span>KANASÍN 2027-2030</span></div>
+<nav>
+<button class="act" onclick="show('inicio',this)">▶ 1. INICIO</button>
+<button onclick="show('ayuntamiento',this)">▶ 2. AYUNTAMIENTO</button>
+<button onclick="show('direcciones',this)">▶ 3. DIRECCIONES</button>
+<button onclick="show('institutos',this)">▶ 4. INSTITUTOS</button>
+<button onclick="show('organismos',this)">▶ 5. ORGANISMOS</button>
+<button onclick="show('participacion',this)">▶ 6. PARTICIPACIÓN</button>
+<button onclick="show('reporta',this)">▶ 7. TRÁMITES</button>
+</nav>
+</header>
+
+<div class="layout">
+<aside class="lado">
+<button onclick="show('formacion',null)">📚 INFP - FORMACIÓN POLÍTICA</button>
+<a href="https://morena.org" target="_blank">🔗 MORENA.ORG</a>
+<a href="https://morena.si" target="_blank">🔗 MORENA SÍ YUCATÁN</a>
+<a href="https://morena.si" target="_blank">🔗 MORENA SÍ</a>
+<button onclick="show('plan',null)">📘 PLAN 2027-2030</button>
+<button onclick="show('tramites',null)">📝 TRÁMITES</button>
+<button onclick="show('quejas',null)">📢 QUEJAS Y SUGERENCIAS</button>
+<button onclick="show('app',null)">📱 APP KANASÍN 24/7</button>
+<button onclick="show('transparencia',null)">🔍 TRANSPARENCIA</button>
+<button onclick="show('cabildo',null)">📺 CABILDO EN VIVO</button>
+<button onclick="show('admin',null)" style="background:#111">🔐 ADMIN</button>
+</aside>
+
+<main>
+<div id="inicio" class="seccion act">
+<div class="card"><h2>BIENVENIDO A KANASÍN 2027-2030</h2><p>Gobierno cercano, honesto y 24/7.</p></div>
+<div class="grid3">
+<div class="red fb"><h3>FACEBOOK</h3><input id="linkFb" placeholder="Tu link Facebook"><button class="btn" style="background:#fff;color:#1877F2;margin-top:8px" onclick="abrirLink('linkFb')">VER</button></div>
+<div class="red ig"><h3>INSTAGRAM</h3><input id="linkIg" placeholder="Tu link Instagram"><button class="btn" style="background:#fff;color:#E1306C;margin-top:8px" onclick="abrirLink('linkIg')">VER</button></div>
+<div class="red yt"><h3>YOUTUBE</h3><input id="linkYt" placeholder="Tu link YouTube"><button class="btn" style="background:#fff;color:#FF0000;margin-top:8px" onclick="abrirLink('linkYt')">VER</button></div>
+</div>
+<div class="card"><h3>🎥 SUBIR VIDEO / FOTO / PDF</h3><input type="file" id="upGeneral" accept="image/*,video/*,.pdf"><button class="btn" onclick="subirArchivo(document.getElementById('upGeneral'),'GENERAL')">SUBIR</button><div id="resGeneral"></div></div>
+</div>
+
+<div id="ayuntamiento" class="seccion"><div class="card"><h2>🏛️ AYUNTAMIENTO - ORGANIGRAMA</h2>
+<div class="org-box" onclick="ver('d-pres')">📍 PRESIDENCIA Y GOBERNACIÓN<div id="d-pres" class="det">Audiencias, gestión general.</div></div>
+<div class="org-box" onclick="ver('d-infra')">📍 INFRAESTRUCTURA<div id="d-infra" class="det">Bacheo, calles, alumbrado, parques.</div></div>
+<div class="org-box" onclick="ver('d-bien')">📍 BIENESTAR<div id="d-bien" class="det">Apoyos, programas sociales.</div></div>
+<div class="org-box" onclick="ver('d-serv')">📍 SERVICIOS PÚBLICOS<div id="d-serv" class="det">Basura, limpia, agua, drenaje.</div></div>
+<div class="org-box" onclick="ver('d-seg')">📍 SEGURIDAD<div id="d-seg" class="det">Patrullaje, prevención.</div></div>
+<div class="org-box" onclick="ver('d-fin')">📍 FINANZAS SANA<div id="d-fin" class="det">Predial, pagos.</div></div>
+<div class="org-box" onclick="ver('d-salud')">📍 SALUD Y MEDIO AMBIENTE<div id="d-salud" class="det">Jornadas de salud.</div></div>
+<div class="org-box" onclick="ver('d-edu')">📍 EDUCACIÓN, CULTURA Y DEPORTE<div id="d-edu" class="det">Talleres, becas.</div></div>
+<div class="org-box" style="background:#C9A227" onclick="ver('d-tejido')">📍 9. TEJIDO SOCIAL, PARIDAD SUSTANTIVA Y JUVENTUDES<div id="d-tejido" class="det">Atención a mujeres, jóvenes, paridad. Sectoriza DIF - Mujer - Juventud.</div></div>
+<div class="org-box" onclick="ver('d-des')">📍 DESARROLLO ECONÓMICO<div id="d-des" class="det">Empleo, emprendedores.</div></div>
+<div class="org-box" onclick="ver('d-trans')">📍 TRANSPARENCIA<div id="d-trans" class="det">Información, denuncias.</div></div>
+</div></div>
+
+<div id="direcciones" class="seccion"><div class="card"><h2>👤 DIRECCIONES</h2><table><tr><th>Dirección</th><th>Director</th><th>Teléfono</th><th>Oficina</th></tr><tr><td>Presidencia</td><td>Eduardo Javier Mora González</td><td>999-XXX-XXXX</td><td>Palacio Municipal</td></tr><tr><td>Tejido Social</td><td>Por asignar</td><td>999-XXX-XXXX</td><td>Centro de Atención</td></tr></table></div></div>
+
+<div id="institutos" class="seccion"><div class="card"><h2>🏫 INSTITUTOS</h2><div class="org-box">DIF KANASÍN <input type="file" accept="image/*,video/*,.pdf" onchange="subirArchivo(this,'DIF')"></div><div class="org-box">MUJER <input type="file" accept="image/*,video/*,.pdf" onchange="subirArchivo(this,'MUJER')"></div><div class="org-box">JUVENTUD <input type="file" accept="image/*,video/*,.pdf" onchange="subirArchivo(this,'JUVENTUD')"></div><div class="org-box">EDUCACIÓN, CULTURA Y DEPORTE <input type="file" accept="image/*,video/*,.pdf" onchange="subirArchivo(this,'CULTURA')"></div></div></div>
+
+<div id="organismos" class="seccion"><div class="card"><h2>💧 ORGANISMOS</h2><div class="org-box">JAPAY <input type="file" accept="image/*,video/*,.pdf" onchange="subirArchivo(this,'JAPAY')"></div><div class="org-box">BASURA <input type="file" accept="image/*,video/*,.pdf" onchange="subirArchivo(this,'BASURA')"></div></div></div>
+
+<div id="participacion" class="seccion"><div class="card"><h2>✋ PARTICIPACIÓN</h2><p>Asambleas, comités. WhatsApp: 999-XXX-XXXX</p></div></div>
+
+<div id="reporta" class="seccion"><div class="card"><h2>📝 REPORTA TU GESTIÓN</h2><input id="g-nombre" placeholder="Nombre *"><input id="g-tel" placeholder="WhatsApp *"><input id="g-colonia" placeholder="Colonia *"><select id="g-tipo"><option>Bacheo</option><option>Alumbrado</option><option>Agua / JAPAY</option><option>Basura</option><option>Seguridad</option><option>Tejido Social</option></select><textarea id="g-desc" placeholder="Describe..."></textarea><input type="file" id="g-archivo" accept="image/*,video/*,.pdf"><button class="btn" onclick="enviarGestion()">ENVIAR Y GENERAR FOLIO</button><div id="resGestion"></div></div></div>
+
+<div id="formacion" class="seccion"><div class="card"><h2>📚 INFP</h2><input type="file" id="upINFP" accept="image/*,video/*,.pdf"><button class="btn" onclick="subirArchivo(document.getElementById('upINFP'),'INFP')">SUBIR</button></div></div>
+<div id="plan" class="seccion"><div class="card"><h2>📘 PLAN 2027-2030</h2><input type="file" id="upPlan" accept=".pdf"><button class="btn" onclick="subirArchivo(document.getElementById('upPlan'),'PLAN')">SUBIR PDF</button></div></div>
+<div id="tramites" class="seccion"><div class="card"><h2>📝 TRÁMITES</h2><input id="t-nombre" placeholder="Nombre *"><input id="t-tel" placeholder="Tel *"><input id="t-colonia" placeholder="Colonia *"><select id="t-tipo"><option>Constancia</option><option>Predial</option><option>Permiso</option></select><textarea id="t-desc" placeholder="Detalle..."></textarea><input type="file" id="t-archivo" accept="image/*,video/*,.pdf"><button class="btn" onclick="enviarColeccion('tramites','t-','resTramite')">ENVIAR</button><div id="resTramite"></div></div></div>
+<div id="quejas" class="seccion"><div class="card"><h2>📢 QUEJAS</h2><input id="q-nombre" placeholder="Nombre *"><input id="q-tel" placeholder="Tel *"><input id="q-colonia" placeholder="Colonia *"><select id="q-tipo"><option>Queja</option><option>Sugerencia</option><option>Denuncia</option></select><textarea id="q-desc" placeholder="Tu queja..."></textarea><input type="file" id="q-archivo" accept="image/*,video/*,.pdf"><button class="btn" onclick="enviarColeccion('quejas','q-','resQueja')">ENVIAR</button><div id="resQueja"></div></div></div>
+<div id="app" class="seccion"><div class="card"><h2>📱 APP 24/7</h2><button class="btn" onclick="show('reporta',null)">REPORTAR 24/7</button></div></div>
+<div id="transparencia" class="seccion"><div class="card"><h2>🔍 TRANSPARENCIA</h2><input type="file" id="upTrans" accept=".pdf"><button class="btn" onclick="subirArchivo(document.getElementById('upTrans'),'TRANSPARENCIA')">SUBIR</button></div></div>
+<div id="cabildo" class="seccion"><div class="card"><h2>📺 CABILDO EN VIVO</h2><div style="background:#111;color:#fff;padding:30px;text-align:center">🔴 EN VIVO - PEGA TU LINK</div><input placeholder="Pega link Facebook Live"></div></div>
+<div id="admin" class="seccion"><div class="card"><h2>🔐 ADMIN</h2><input type="email" id="adminEmail" placeholder="Tu correo admin"><input type="password" id="adminPass" placeholder="Tu contraseña"><button class="btn" onclick="loginAdmin()">ENTRAR</button><div id="panelAdmin"></div></div></div>
+
+<img src="foto1.jpg" class="ayunta"><p style="text-align:center;font-size:11px">Imagen del Ayuntamiento - Uso Ilustrativo</p>
+</main>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "TU_API_KEY_AQUI",
+  authDomain: "TU-PROYECTO.firebaseapp.com",
+  projectId: "TU-PROYECTO",
+  storageBucket: "TU-PROYECTO.appspot.com",
+  messagingSenderId: "TU_SENDER",
+  appId: "TU_APP_ID"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore(); const storage = firebase.storage(); const auth = firebase.auth();
+function show(id,btn){document.querySelectorAll('.seccion').forEach(s=>s.classList.remove('act'));document.getElementById(id).classList.add('act');document.querySelectorAll('nav button').forEach(b=>b.classList.remove('act'));if(btn)btn.classList.add('act');window.scrollTo({top:0,behavior:'smooth'})}
+function ver(id){document.getElementById(id).classList.toggle('act')}
+function abrirLink(id){let v=document.getElementById(id).value; if(v) window.open(v,'_blank'); else alert('Pega tu link')}
+async function subirArchivo(input,carpeta){let f=input.files[0]; if(!f) return alert('Elige archivo'); let ref=storage.ref(carpeta+'/'+Date.now()+'-'+f.name); await ref.put(f); let url=await ref.getDownloadURL(); alert('✅ Subido a Firebase'); return url;}
+async function enviarGestion(){let n=document.getElementById('g-nombre').value,t=document.getElementById('g-tel').value,c=document.getElementById('g-colonia').value; if(!n||!t||!c) return alert('Llena datos'); let folio='KAN-2026-'+String(Date.now()).slice(-6); let url=''; let f=document.getElementById('g-archivo').files[0]; if(f){let r=storage.ref('gestiones/'+Date.now()+'-'+f.name); await r.put(f); url=await r.getDownloadURL();} await db.collection('gestiones').add({folio,nombre:n,telefono:t,colonia:c,tipo:document.getElementById('g-tipo').value,descripcion:document.getElementById('g-desc').value,archivo:url,fecha:new Date().toLocaleString('es-MX'),estatus:'RECIBIDA'}); document.getElementById('resGestion').innerHTML=`<div style="background:#FFF3CD;padding:12px;text-align:center;font-weight:900">✅ FOLIO: ${folio}<br>Guardado en Google, ya no lo puedes borrar.</div><button class="btn" style="background:#C9A227;color:#111;margin-top:8px" onclick="window.print()">⬇ DESCARGAR ACUSE</button>`;}
+async function enviarColeccion(col,pref,resId){let n=document.getElementById(pref+'nombre').value,t=document.getElementById(pref+'tel').value,c=document.getElementById(pref+'colonia').value; if(!n||!t||!c) return alert('Llena datos'); let folio=pref.toUpperCase()+'-'+String(Date.now()).slice(-6); let url=''; let f=document.getElementById(pref+'archivo').files[0]; if(f){let r=storage.ref(col+'/'+Date.now()+'-'+f.name); await r.put(f); url=await r.getDownloadURL();} await db.collection(col).add({folio,nombre:n,telefono:t,colonia:c,tipo:document.getElementById(pref+'tipo').value,descripcion:document.getElementById(pref+'desc').value,archivo:url,fecha:new Date().toLocaleString('es-MX'),estatus:'RECIBIDA'}); document.getElementById(resId).innerHTML=`✅ GUARDADO - FOLIO: ${folio}`;}
+async function loginAdmin(){let e=document.getElementById('adminEmail').value,p=document.getElementById('adminPass').value; try{await auth.signInWithEmailAndPassword(e,p); let snap=await db.collection('gestiones').orderBy('fecha','desc').limit(50).get(); let h=`<h3>Total: ${snap.size}</h3><table><tr><th>Folio</th><th>Nombre</th><th>Colonia</th><th>Tipo</th><th>Archivo</th></tr>`; snap.forEach(d=>{let x=d.data(); h+=`<tr><td>${x.folio}</td><td>${x.nombre}<br>${x.telefono}</td><td>${x.colonia}</td><td>${x.tipo}</td><td>${x.archivo?`<a href="${x.archivo}" target="_blank">Ver</a>`:''}</td></tr>`}); h+='</table>'; document.getElementById('panelAdmin').innerHTML=h;}catch(err){alert('Correo o contraseña incorrecta. Crea tu usuario en Firebase Authentication');}}
+</script>
+</body></html>
